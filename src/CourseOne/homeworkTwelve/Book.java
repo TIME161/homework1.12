@@ -1,5 +1,8 @@
 package CourseOne.homeworkTwelve;
-    public class Book {
+
+import java.util.Objects;
+
+public class Book {
     private String titleName;
     private int year;
     Author author;
@@ -26,5 +29,23 @@ package CourseOne.homeworkTwelve;
     }
     public Author setAuthor(Author author) {
         return this.author = author;
+    }
+
+    @Override
+    public String toString() {
+            return  this.titleName + ", Год публикации - " + this.year + ", " + author;
+        }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if ((o == null) || !o.getClass().equals(Book.class)) return false;
+        Book book = (Book) o;
+        return this.year == book.year && Objects.equals(this.titleName, book.titleName) && Objects.equals(author, book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titleName, year, author);
     }
 }
