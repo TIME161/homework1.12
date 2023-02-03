@@ -1,5 +1,7 @@
 package CourseOne.homeworkTwelve;
 
+import java.util.Objects;
+
 public class Author {
     private String name;
     private String surName;
@@ -19,4 +21,17 @@ public class Author {
         return this.name = name;}
     public String setSurName(String surName) {
         return this.name = surName;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !o.getClass().equals(Author.class)) return false;
+        Author aut = (Author) o;
+        return Objects.equals(this.name, aut.name) && Objects.equals(this.surName, aut.surName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name, this.surName);
+    }
 }
